@@ -1,0 +1,811 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+}
+
+header {
+    margin-bottom: 60px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.logo-image {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.tagline {
+    font-size: 1.25rem;
+    color: #666666;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.hero-section {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-headline {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: #555555;
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+
+.hero-description strong {
+    color: #333333;
+    font-weight: 600;
+}
+
+.hero-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero-feature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: #444444;
+    transition: all 0.3s ease;
+}
+
+.hero-feature:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+}
+
+.hero-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    width: 100%;
+}
+
+.upload-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border: none;
+    padding: 18px 48px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.upload-button:hover::before {
+    left: 100%;
+}
+
+.upload-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.upload-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.button-text {
+    position: relative;
+    z-index: 1;
+}
+
+.preview-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 500px;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    object-fit: contain;
+}
+
+.feedback-panel {
+    margin-top: 50px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 32px;
+    text-align: left;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.6s ease-in;
+    max-width: 100%;
+}
+
+.feedback-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.feedback-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feedback-list li {
+    padding: 12px 0;
+    padding-left: 28px;
+    position: relative;
+    color: #333333;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.feedback-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.feedback-list li:not(:last-child) {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.caption-panel {
+    margin-top: 30px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 32px;
+    text-align: left;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.6s ease-in;
+    max-width: 100%;
+}
+
+.caption-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.caption-content {
+    text-align: center;
+}
+
+.main-caption {
+    font-size: 1.125rem;
+    color: #333333;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    font-style: italic;
+    padding: 0 10px;
+}
+
+.hashtags-container {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.hashtag {
+    display: inline-block;
+    background: #ffffff;
+    color: #667eea;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid #e0e0e0;
+    transition: all 0.2s ease;
+}
+
+.hashtag:hover {
+    background: #667eea;
+    color: #ffffff;
+    border-color: #667eea;
+    transform: translateY(-1px);
+}
+
+.idea-panel {
+    margin-top: 30px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 32px;
+    text-align: left;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.6s ease-in;
+    max-width: 100%;
+}
+
+.idea-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.idea-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.idea-list li {
+    padding: 14px 0;
+    padding-left: 32px;
+    position: relative;
+    color: #333333;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.idea-list li::before {
+    content: '💡';
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.idea-list li:not(:last-child) {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.trend-panel {
+    margin-top: 30px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 32px;
+    text-align: left;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.6s ease-in;
+    max-width: 100%;
+}
+
+.trend-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.trend-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.trend-item {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.trend-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    border-color: #667eea;
+}
+
+.trend-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 12px;
+}
+
+.trend-item-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+    flex: 1;
+}
+
+.trend-platform {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.trend-platform.tiktok {
+    background: #000000;
+    color: #ffffff;
+}
+
+.trend-platform.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #ffffff;
+}
+
+.trend-platform.youtube {
+    background: #ff0000;
+    color: #ffffff;
+}
+
+.trend-platform.offline {
+    background: #667eea;
+    color: #ffffff;
+}
+
+.trend-description {
+    font-size: 0.95rem;
+    color: #666666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.income-panel {
+    margin-top: 30px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 32px;
+    text-align: left;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.6s ease-in;
+    max-width: 100%;
+}
+
+.income-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.income-subtitle {
+    font-size: 1rem;
+    color: #666666;
+    text-align: center;
+    margin-bottom: 32px;
+    font-style: italic;
+}
+
+.income-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.income-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.income-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    border-color: #667eea;
+}
+
+.income-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #667eea;
+}
+
+.income-section {
+    margin-bottom: 24px;
+}
+
+.income-section:last-child {
+    margin-bottom: 0;
+}
+
+.income-section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.income-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.income-list li {
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+    color: #555555;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.income-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo-image {
+        max-width: 250px;
+    }
+    
+    .tagline {
+        font-size: 1.1rem;
+        padding: 0 20px;
+    }
+    
+    .upload-button {
+        padding: 16px 40px;
+        font-size: 1rem;
+    }
+    
+    header {
+        margin-bottom: 40px;
+    }
+    
+    .hero-section {
+        margin-bottom: 40px;
+    }
+    
+    .hero-headline {
+        font-size: 1.6rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .hero-feature {
+        font-size: 0.95rem;
+        padding: 14px 18px;
+    }
+    
+    .preview-image {
+        max-height: 400px;
+    }
+    
+    .feedback-panel {
+        margin-top: 40px;
+        padding: 24px;
+    }
+    
+    .feedback-title {
+        font-size: 1.3rem;
+    }
+    
+    .caption-panel {
+        margin-top: 30px;
+        padding: 24px;
+    }
+    
+    .caption-title {
+        font-size: 1.3rem;
+    }
+    
+    .main-caption {
+        font-size: 1.05rem;
+    }
+    
+    .idea-panel {
+        margin-top: 30px;
+        padding: 24px;
+    }
+    
+    .idea-title {
+        font-size: 1.3rem;
+    }
+    
+    .trend-panel {
+        margin-top: 30px;
+        padding: 24px;
+    }
+    
+    .trend-title {
+        font-size: 1.3rem;
+    }
+    
+    .trend-item {
+        padding: 16px;
+    }
+    
+    .trend-item-title {
+        font-size: 1rem;
+    }
+    
+    .income-panel {
+        margin-top: 30px;
+        padding: 24px;
+    }
+    
+    .income-title {
+        font-size: 1.3rem;
+    }
+    
+    .income-columns {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .income-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-image {
+        max-width: 200px;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .hero-section {
+        margin-bottom: 30px;
+        padding: 0 15px;
+    }
+    
+    .hero-headline {
+        font-size: 1.4rem;
+        margin-bottom: 16px;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+    }
+    
+    .hero-features {
+        gap: 12px;
+    }
+    
+    .hero-feature {
+        font-size: 0.9rem;
+        padding: 12px 16px;
+        flex-direction: row;
+        text-align: left;
+    }
+    
+    .hero-icon {
+        font-size: 1.3rem;
+    }
+    
+    .upload-button {
+        padding: 14px 32px;
+        font-size: 0.95rem;
+        width: 90%;
+        max-width: 300px;
+    }
+    
+    .preview-image {
+        max-height: 300px;
+    }
+    
+    .feedback-panel {
+        margin-top: 30px;
+        padding: 20px;
+    }
+    
+    .feedback-title {
+        font-size: 1.2rem;
+    }
+    
+    .feedback-list li {
+        font-size: 0.95rem;
+        padding: 10px 0;
+        padding-left: 24px;
+    }
+    
+    .caption-panel {
+        margin-top: 25px;
+        padding: 20px;
+    }
+    
+    .caption-title {
+        font-size: 1.2rem;
+    }
+    
+    .main-caption {
+        font-size: 1rem;
+    }
+    
+    .hashtag {
+        font-size: 0.85rem;
+        padding: 5px 10px;
+    }
+    
+    .idea-panel {
+        margin-top: 25px;
+        padding: 20px;
+    }
+    
+    .idea-title {
+        font-size: 1.2rem;
+    }
+    
+    .idea-list li {
+        font-size: 0.95rem;
+        padding: 12px 0;
+        padding-left: 28px;
+    }
+    
+    .trend-panel {
+        margin-top: 25px;
+        padding: 20px;
+    }
+    
+    .trend-title {
+        font-size: 1.2rem;
+    }
+    
+    .trend-item {
+        padding: 14px;
+    }
+    
+    .trend-item-title {
+        font-size: 0.95rem;
+    }
+    
+    .trend-description {
+        font-size: 0.9rem;
+    }
+    
+    .trend-platform {
+        font-size: 0.7rem;
+        padding: 3px 10px;
+    }
+    
+    .trend-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .income-panel {
+        margin-top: 25px;
+        padding: 20px;
+    }
+    
+    .income-title {
+        font-size: 1.2rem;
+    }
+    
+    .income-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .income-card-title {
+        font-size: 1.1rem;
+    }
+    
+    .income-section-title {
+        font-size: 0.95rem;
+    }
+    
+    .income-list li {
+        font-size: 0.9rem;
+        padding: 6px 0;
+        padding-left: 22px;
+    }
+}
+
