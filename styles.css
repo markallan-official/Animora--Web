@@ -808,6 +808,7 @@ main {
         padding-left: 22px;
     }
 }
+/* Layout spacing fix */
 section {
     margin-bottom: 60px;
   }
@@ -816,6 +817,11 @@ section {
     margin-bottom: 80px;
   }
   
-  h2 {
+  #income {
+    margin-bottom: 80px;
+  }
+  
+  #how-it-works {
     margin-top: 40px;
   }
+  
