@@ -819,5 +819,17 @@ section {
   h2 {
     margin-top: 40px;
   }
-  
+  /* Improve list alignment for income & how-it-works sections */
+#income ul,
+#how-it-works ol {
+  list-style-position: inside;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+#income li,
+#how-it-works li {
+  margin-bottom: 8px;
+  text-align: left;
+}
   
