@@ -820,16 +820,14 @@ section {
     margin-top: 40px;
   }
   /* Improve list alignment for income & how-it-works sections */
-#income ul,
-#how-it-works ol {
-  list-style-position: inside;
-  padding-left: 0;
-  margin-left: 0;
+  #income ul,
+  #how-it-works ol {
+    list-style-position: inside;
+    padding-left: 0;
+    margin-left: 0;
+    margin-top: 8px;
+  }
+  #income,
+#how-it-works {
+  margin-bottom: 40px;
 }
-
-#income li,
-#how-it-works li {
-  margin-bottom: 8px;
-  text-align: left;
-}
-  
