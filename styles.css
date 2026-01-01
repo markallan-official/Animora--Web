@@ -808,19 +808,19 @@ main {
         padding-left: 22px;
     }
 }
+/* Force clear separation between main sections */
 section {
-    margin-bottom: 60px;
-  }
-  
-  #hero {
-    margin-bottom: 80px;
+    display: block;
+    margin: 80px 0;
+    padding: 0;
   }
   
   #income {
-    margin-bottom: 80px;
+    margin-bottom: 120px;
   }
   
   #how-it-works {
-    margin-top: 40px;
+    margin-top: 120px;
   }
+  
   
