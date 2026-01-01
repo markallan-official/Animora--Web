@@ -808,4 +808,14 @@ main {
         padding-left: 22px;
     }
 }
-
+section {
+    margin-bottom: 60px;
+  }
+  
+  #hero {
+    margin-bottom: 80px;
+  }
+  
+  h2 {
+    margin-top: 40px;
+  }
