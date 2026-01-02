@@ -897,3 +897,17 @@ section {
     font-weight: bold;
     text-decoration: none;
   }
+  .demo, .revenue, .earn {
+    margin-top: 40px;
+    padding: 20px;
+    background: #f7f7ff;
+    border-radius: 12px;
+  }
+  
+  .demo h2, .revenue h2, .earn h2 {
+    margin-bottom: 10px;
+  }
+  
+  .demo ul, .revenue ul, .earn ul {
+    padding-left: 20px;
+  }
