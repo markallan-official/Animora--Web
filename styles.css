@@ -867,3 +867,11 @@ section {
   #onboarding ol {
     margin-top: 15px;
   }
+  #offlineStatus {
+    display: none;
+    background: #ffefc5;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+  }
