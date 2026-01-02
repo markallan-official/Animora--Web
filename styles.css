@@ -875,4 +875,25 @@ section {
     text-align: center;
     font-size: 14px;
   }
+  .trust-section {
+    background: #f9f9ff;
+    padding: 40px;
+    margin-top: 60px;
+    border-radius: 12px;
+  }
   
+  .trust-section h2 {
+    margin-bottom: 15px;
+  }
+  
+  .trust-section ul {
+    margin-left: 20px;
+  }
+  
+  .trust-section a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #5a4bff;
+    font-weight: bold;
+    text-decoration: none;
+  }
