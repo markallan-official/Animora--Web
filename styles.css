@@ -961,3 +961,49 @@ section {
   section h2 {
     color: #4b4cff;
   }
+  .feedback-section {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 30px;
+    background: #111;
+    border-radius: 12px;
+    text-align: center;
+  }
+  
+  .feedback-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .feedback-section p {
+    margin-bottom: 20px;
+    color: #ccc;
+  }
+  
+  .feedback-section input,
+  .feedback-section textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+  }
+  
+  .feedback-section textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .feedback-section button {
+    padding: 12px 24px;
+    background: #7c3aed;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  
+  .feedback-section button:hover {
+    opacity: 0.9;
+  }
