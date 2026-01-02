@@ -272,13 +272,14 @@
     method="POST"
     target="_blank"
   >
-  <input type="text" name="entry.1922258308" placeholder="Your name (optional)" />
+  <form id="feedbackForm"></form>
+  <input type="text" id="userName" placeholder="Your name (optional)" />
       
   <textarea
-  name="entry.956488903"
-  placeholder="What do you like? What should we improve?"
-  required
-></textarea>
+      id="userFeedback"
+      placeholder="What do you like? What should we improve?"
+      required
+    ></textarea>
   
       <button type="submit">Send Feedback</button>
     </form>
