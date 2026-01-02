@@ -371,9 +371,21 @@ document.addEventListener('DOMContentLoaded', function() {
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+function resizeCanvas() {
+  canvas.width = canvas.offsetWidth;
+  canvas.height = 400;
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
 let drawing = false;
 
-canvas.addEventListener("mousedown", () => drawing = true);
+canvas.addEventListener("mousedown", () => {
+  drawing = true;
+  ctx.beginPath();
+});
+
 canvas.addEventListener("mouseup", () => drawing = false);
 canvas.addEventListener("mouseleave", () => drawing = false);
 
@@ -388,8 +400,6 @@ function draw(e) {
 
   ctx.lineTo(e.offsetX, e.offsetY);
   ctx.stroke();
-  ctx.beginPath();
-  ctx.moveTo(e.offsetX, e.offsetY);
 }
 
 document.getElementById("clearCanvas").addEventListener("click", () => {
