@@ -405,12 +405,7 @@ function draw(e) {
 document.getElementById("clearCanvas").addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/sw.js")
-      .then(() => console.log("Service Worker registered"))
-      .catch(err => console.error("Service Worker error:", err));
-  }
-  const offlineStatus = document.getElementById("offlineStatus");
+const offlineStatus = document.getElementById("offlineStatus");
 
 function updateOnlineStatus() {
   if (!navigator.onLine) {
@@ -424,3 +419,8 @@ window.addEventListener("online", updateOnlineStatus);
 window.addEventListener("offline", updateOnlineStatus);
 
 updateOnlineStatus();
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js")
+      .then(() => console.log("Service Worker registered"))
+      .catch(err => console.error("Service Worker error:", err));
+  }
