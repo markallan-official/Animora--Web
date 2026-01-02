@@ -419,22 +419,4 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/sw.js")
       .then(() => console.log("Service Worker registered"))
       .catch(err => console.error("Service Worker error:", err));
-  }
-  document.getElementById("feedbackForm")?.addEventListener("submit", function (e) {
-    e.preventDefault();
-  
-    const name = document.getElementById("userName").value || "Anonymous";
-    const feedback = document.getElementById("userFeedback").value;
-  
-    if (typeof gtag === "function") {
-      gtag("event", "user_feedback", {
-        user_name: name,
-        feedback_text: feedback
-      });
-    }
-  
-    document.getElementById("feedbackStatus").innerText =
-      "Thank you! Your feedback has been sent.";
-  
-    this.reset();
-  });
+  } 
