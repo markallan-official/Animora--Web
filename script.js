@@ -368,24 +368,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-const canvas = document.getElementById("canvas");
+
+const canvas = document.getElementById("drawCanvas");
 const ctx = canvas.getContext("2d");
 
-function resizeCanvas() {
-  canvas.width = canvas.offsetWidth;
-  canvas.height = 400;
-}
-
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
+canvas.width = canvas.offsetWidth;
+canvas.height = canvas.offsetHeight;
 
 let drawing = false;
+let tool = "pen";
 
-canvas.addEventListener("mousedown", () => {
-  drawing = true;
-  ctx.beginPath();
-});
-
+canvas.addEventListener("mousedown", () => drawing = true);
 canvas.addEventListener("mouseup", () => drawing = false);
 canvas.addEventListener("mouseleave", () => drawing = false);
 
@@ -394,17 +387,20 @@ canvas.addEventListener("mousemove", draw);
 function draw(e) {
   if (!drawing) return;
 
-  ctx.lineWidth = 3;
+  ctx.lineWidth = tool === "eraser" ? 20 : 3;
+  ctx.strokeStyle = tool === "eraser" ? "#ffffff" : "#000000";
   ctx.lineCap = "round";
-  ctx.strokeStyle = "#000";
 
   ctx.lineTo(e.offsetX, e.offsetY);
   ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(e.offsetX, e.offsetY);
 }
 
-document.getElementById("clearCanvas").addEventListener("click", () => {
+document.getElementById("pen").onclick = () => tool = "pen";
+document.getElementById("eraser").onclick = () => tool = "eraser";
+document.getElementById("clear").onclick = () =>
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-});
 const offlineStatus = document.getElementById("offlineStatus");
 
 function updateOnlineStatus() {
