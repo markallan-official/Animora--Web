@@ -1,3 +1,4 @@
+sw.js
 const CACHE_NAME = "animora-cache-v1";
 
 const FILES_TO_CACHE = [
