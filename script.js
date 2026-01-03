@@ -369,6 +369,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+ // ===== CANVAS DRAWING SYSTEM =====
 const canvas = document.getElementById("drawCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -378,61 +379,56 @@ canvas.height = canvas.offsetHeight;
 let drawing = false;
 let currentTool = "pen"; // pen | eraser
 
+ctx.lineCap = "round";
+ctx.strokeStyle = "#000";
+ctx.lineWidth = 3;
+
+// Start drawing
 canvas.addEventListener("mousedown", (e) => {
-    drawing = true;
-    ctx.beginPath();
-    ctx.moveTo(e.offsetX, e.offsetY);
-  });
-  
-  canvas.addEventListener("mousemove", (e) => {
-    if (!drawing) return;
-  
-    if (currentTool === "eraser") {
-      ctx.globalCompositeOperation = "destination-out";
-      ctx.lineWidth = 20; // eraser size
-    } else {
-      ctx.globalCompositeOperation = "source-over";
-      ctx.lineWidth = 3; // pen size
-    }
-  
-    ctx.lineTo(e.offsetX, e.offsetY);
-    ctx.stroke();
-  });
-  
-  canvas.addEventListener("mouseup", () => {
-    drawing = false;
-    ctx.beginPath();
-    ctx.globalCompositeOperation = "source-over"; // reset
-  });
-  
-  canvas.addEventListener("mouseleave", () => {
-    drawing = false;
-    ctx.beginPath();
-    ctx.globalCompositeOperation = "source-over";
-  });
-  
-function draw(e) {
+  drawing = true;
+  ctx.beginPath();
+  ctx.moveTo(e.offsetX, e.offsetY);
+});
+
+// Draw or erase
+canvas.addEventListener("mousemove", (e) => {
   if (!drawing) return;
-  ctx.lineWidth = tool === "eraser" ? 20 : 3;
-  ctx.strokeStyle = tool === "eraser" ? "#ffffff" : "#000000";
-  ctx.lineCap = "round";
+
+  if (currentTool === "eraser") {
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.lineWidth = 20;
+  } else {
+    ctx.globalCompositeOperation = "source-over";
+    ctx.lineWidth = 3;
+  }
 
   ctx.lineTo(e.offsetX, e.offsetY);
   ctx.stroke();
+});
+
+// Stop drawing
+function stopDrawing() {
+  drawing = false;
   ctx.beginPath();
-  ctx.moveTo(e.offsetX, e.offsetY);
+  ctx.globalCompositeOperation = "source-over";
 }
 
-document.getElementById("eraserBtn").addEventListener("click", () => {
-    currentTool = "eraser";
-  });
-  
-  document.getElementById("penBtn").addEventListener("click", () => {
-    currentTool = "pen";
-  });
+canvas.addEventListener("mouseup", stopDrawing);
+canvas.addEventListener("mouseleave", stopDrawing);
 
-document.getElementById("clear").onclick = () =>
+// Tool buttons
+document.getElementById("penBtn").onclick = () => {
+  currentTool = "pen";
+};
+
+document.getElementById("eraserBtn").onclick = () => {
+  currentTool = "eraser";
+};
+
+// Clear canvas
+document.getElementById("clear").onclick = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+};
 const offlineStatus = document.getElementById("offlineStatus");
 
 function updateOnlineStatus() {
