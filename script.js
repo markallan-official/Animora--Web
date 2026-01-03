@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
- // ===== CANVAS DRAWING SYSTEM =====
+/* ================= CANVAS ================= */
 const canvas = document.getElementById("drawCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -377,21 +377,18 @@ canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 
 let drawing = false;
-let currentTool = "pen"; // pen | eraser
+let currentTool = "pen";
 
 ctx.lineCap = "round";
-ctx.strokeStyle = "#000";
-ctx.lineWidth = 3;
+ctx.strokeStyle = "#00f6ff";
 
-// Start drawing
-canvas.addEventListener("mousedown", (e) => {
+canvas.addEventListener("mousedown", e => {
   drawing = true;
   ctx.beginPath();
   ctx.moveTo(e.offsetX, e.offsetY);
 });
 
-// Draw or erase
-canvas.addEventListener("mousemove", (e) => {
+canvas.addEventListener("mousemove", e => {
   if (!drawing) return;
 
   if (currentTool === "eraser") {
@@ -406,29 +403,67 @@ canvas.addEventListener("mousemove", (e) => {
   ctx.stroke();
 });
 
-// Stop drawing
-function stopDrawing() {
+canvas.addEventListener("mouseup", () => {
   drawing = false;
   ctx.beginPath();
-  ctx.globalCompositeOperation = "source-over";
-}
+});
 
-canvas.addEventListener("mouseup", stopDrawing);
-canvas.addEventListener("mouseleave", stopDrawing);
+canvas.addEventListener("mouseleave", () => drawing = false);
 
-// Tool buttons
-document.getElementById("penBtn").onclick = () => {
-  currentTool = "pen";
-};
-
-document.getElementById("eraserBtn").onclick = () => {
-  currentTool = "eraser";
-};
-
-// Clear canvas
-document.getElementById("clear").onclick = () => {
+document.getElementById("penBtn").onclick = () => currentTool = "pen";
+document.getElementById("eraserBtn").onclick = () => currentTool = "eraser";
+document.getElementById("clear").onclick = () =>
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-};
+
+/* ================= UPLOAD & AI ================= */
+const uploadInput = document.getElementById("uploadArtwork");
+const preview = document.getElementById("artPreview");
+
+uploadInput?.addEventListener("change", () => {
+  const file = uploadInput.files[0];
+  if (!file) return;
+
+  preview.src = URL.createObjectURL(file);
+  preview.style.display = "block";
+
+  showAIFeedback();
+});
+
+function showAIFeedback() {
+    document.getElementById("aiSection").style.display = "block";
+  
+    document.getElementById("aiFeedback").innerText =
+      "This artwork shows strong creativity and visual identity. With refinement and consistency, it can perform well commercially.";
+  
+    document.getElementById("artTrends").innerText =
+      "🔥 Trending styles: Neon cyberpunk, futuristic minimalism, AI-inspired abstract forms.";
+  
+    document.getElementById("captions").innerText =
+      "Caption ideas:\n• \"Art designed beyond tomorrow\"\n• \"Where imagination meets technology\"\n• \"Created with vision, powered by AI\"";
+  
+    document.getElementById("hashtags").innerText =
+      "#Animora #DigitalArt #AIArt #FutureDesign #CreativeTech";
+  
+    // ART IDEAS GENERATOR
+    const ideas = [
+      "A futuristic city powered by glowing energy lines",
+      "A human-robot hybrid discovering creativity",
+      "An African-inspired cyberpunk character",
+      "Nature reclaiming abandoned technology",
+      "A floating digital library of human imagination",
+      "A student artist transforming into a professional creator",
+      "An AI assistant guiding an artist in a neon studio"
+    ];
+  
+    const ideasList = document.getElementById("artIdeas");
+    ideasList.innerHTML = "";
+  
+    ideas.sort(() => 0.5 - Math.random()).slice(0, 4).forEach(idea => {
+      const li = document.createElement("li");
+      li.textContent = idea;
+      ideasList.appendChild(li);
+    });
+  }
 document.addEventListener("DOMContentLoaded", () => {
     const uploadButton = document.getElementById("uploadButton");
     const fileInput = document.getElementById("fileInput");
