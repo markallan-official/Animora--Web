@@ -376,7 +376,7 @@ canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 
 let drawing = false;
-let tool = "pen";
+let currentTool = "pen"; // pen | eraser
 
 canvas.addEventListener("mousedown", (e) => {
     drawing = true;
@@ -386,6 +386,15 @@ canvas.addEventListener("mousedown", (e) => {
   
   canvas.addEventListener("mousemove", (e) => {
     if (!drawing) return;
+  
+    if (currentTool === "eraser") {
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.lineWidth = 20; // eraser size
+    } else {
+      ctx.globalCompositeOperation = "source-over";
+      ctx.lineWidth = 3; // pen size
+    }
+  
     ctx.lineTo(e.offsetX, e.offsetY);
     ctx.stroke();
   });
@@ -393,16 +402,17 @@ canvas.addEventListener("mousedown", (e) => {
   canvas.addEventListener("mouseup", () => {
     drawing = false;
     ctx.beginPath();
+    ctx.globalCompositeOperation = "source-over"; // reset
   });
   
   canvas.addEventListener("mouseleave", () => {
     drawing = false;
     ctx.beginPath();
+    ctx.globalCompositeOperation = "source-over";
   });
-
+  
 function draw(e) {
   if (!drawing) return;
-
   ctx.lineWidth = tool === "eraser" ? 20 : 3;
   ctx.strokeStyle = tool === "eraser" ? "#ffffff" : "#000000";
   ctx.lineCap = "round";
@@ -413,8 +423,14 @@ function draw(e) {
   ctx.moveTo(e.offsetX, e.offsetY);
 }
 
-document.getElementById("pen").onclick = () => tool = "pen";
-document.getElementById("eraser").onclick = () => tool = "eraser";
+document.getElementById("eraserBtn").addEventListener("click", () => {
+    currentTool = "eraser";
+  });
+  
+  document.getElementById("penBtn").addEventListener("click", () => {
+    currentTool = "pen";
+  });
+
 document.getElementById("clear").onclick = () =>
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 const offlineStatus = document.getElementById("offlineStatus");
