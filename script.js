@@ -380,6 +380,7 @@ let tool = "pen";
 
 canvas.addEventListener("mousedown", () => drawing = true);
 canvas.addEventListener("mouseup", () => drawing = false);
+ctx.beginPath();
 canvas.addEventListener("mouseleave", () => drawing = false);
 
 canvas.addEventListener("mousemove", draw);
