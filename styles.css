@@ -1007,21 +1007,4 @@ section {
   .feedback-section button:hover {
     opacity: 0.9;
   }
-  .feedback-section {
-    margin: 80px auto;
-    padding: 40px;
-    max-width: 900px;
-    background: #f9f9ff;
-    border-radius: 12px;
-    text-align: center;
-  }
   
-  .feedback-section h2 {
-    margin-bottom: 10px;
-    font-size: 28px;
-  }
-  
-  .feedback-section p {
-    margin-bottom: 25px;
-    color: #555;
-  }
