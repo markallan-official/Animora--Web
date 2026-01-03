@@ -429,6 +429,30 @@ document.getElementById("eraserBtn").onclick = () => {
 document.getElementById("clear").onclick = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 };
+document.addEventListener("DOMContentLoaded", () => {
+    const uploadButton = document.getElementById("uploadButton");
+    const fileInput = document.getElementById("fileInput");
+    const previewContainer = document.getElementById("previewContainer");
+    const previewImage = document.getElementById("previewImage");
+  
+    if (!uploadButton || !fileInput) return;
+  
+    uploadButton.addEventListener("click", () => {
+      fileInput.click();
+    });
+  
+    fileInput.addEventListener("change", () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+  
+      const reader = new FileReader();
+      reader.onload = () => {
+        previewImage.src = reader.result;
+        previewContainer.style.display = "flex";
+      };
+      reader.readAsDataURL(file);
+    });
+  });
 const offlineStatus = document.getElementById("offlineStatus");
 
 function updateOnlineStatus() {

@@ -17,6 +17,7 @@
   <title>Animora — AI for Artists to Create, Grow, and Earn</title>
 
   <link rel="stylesheet" href="style.css?v=3">
+  <script defer src="script.js?v=3"></script>
 </head>
 
 <body>
@@ -62,11 +63,13 @@
       <button id="eraserBtn">🧽 Eraser</button>
       <button id="clear">🗑️ Clear</button>
     </div>
-    <button class="upload-button" id="uploadButton">
-      <span class="button-text">📤 Upload Artwork</span>
-    </button>
-    
-    <input type="file" id="fileInput" accept="image/png,image/jpeg,image/jpg" hidden>
+    <button id="uploadButton" class="upload-button">Upload Artwork</button>
+
+<input type="file" id="fileInput" accept="image/*" hidden>
+
+<div id="previewContainer" style="display:none;">
+  <img id="previewImage" />
+</div>
   </section>
   <section class="cta">
     <h2>Grow From Student to Professional</h2>
@@ -117,7 +120,6 @@
   </section>
 </main>
 
-<script src="script.js?v=3"></script>
 </body>
 </html>
 
