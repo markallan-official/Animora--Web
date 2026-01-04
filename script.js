@@ -370,13 +370,124 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function resizeCanvas() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ================= IMAGE UPLOAD ================= */
+    const fileInput = document.getElementById("fileInput");
+    const uploadButton = document.getElementById("uploadButton");
+    const previewContainer = document.getElementById("previewContainer");
+    const previewImage = document.getElementById("previewImage");
   
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
+    uploadButton?.addEventListener("click", () => fileInput.click());
   
-  ctx.lineCap = "round";
-  ctx.strokeStyle = "#00f6ff"; // futuristic cyan
+    fileInput?.addEventListener("change", () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+  
+      if (!file.type.startsWith("image/")) {
+        alert("Please upload an image file");
+        return;
+      }
+  
+      const reader = new FileReader();
+      reader.onload = () => {
+        previewImage.src = reader.result;
+        previewContainer.style.display = "flex";
+  
+        // Prevent horizontal scrolling
+        previewImage.style.maxWidth = "100%";
+        previewImage.style.height = "auto";
+      };
+      reader.readAsDataURL(file);
+    });
+  
+    /* ================= CANVAS FIX ================= */
+    const canvas = document.getElementById("drawCanvas");
+    if (!canvas) return;
+  
+    const ctx = canvas.getContext("2d");
+  
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    }
+  
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+  
+    let drawing = false;
+    let currentTool = "pen";
+  
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.strokeStyle = "#111";
+    ctx.lineWidth = 3;
+  
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      return {
+        x: (e.touches ? e.touches[0].clientX : e.clientX) - rect.left,
+        y: (e.touches ? e.touches[0].clientY : e.clientY) - rect.top
+      };
+    }
+  
+    function startDraw(e) {
+      drawing = true;
+      const pos = getPos(e);
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+    }
+  
+    function draw(e) {
+      if (!drawing) return;
+      e.preventDefault();
+  
+      const pos = getPos(e);
+  
+      if (currentTool === "eraser") {
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.lineWidth = 20;
+      } else {
+        ctx.globalCompositeOperation = "source-over";
+        ctx.strokeStyle = "#111";
+        ctx.lineWidth = 3;
+      }
+  
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+    }
+  
+    function stopDraw() {
+      drawing = false;
+      ctx.beginPath();
+    }
+  
+    // Mouse
+    canvas.addEventListener("mousedown", startDraw);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", stopDraw);
+    canvas.addEventListener("mouseleave", stopDraw);
+  
+    // Touch (PHONE FIX)
+    canvas.addEventListener("touchstart", startDraw, { passive: false });
+    canvas.addEventListener("touchmove", draw, { passive: false });
+    canvas.addEventListener("touchend", stopDraw);
+  
+    document.getElementById("penBtn")?.addEventListener("click", () => currentTool = "pen");
+    document.getElementById("eraserBtn")?.addEventListener("click", () => currentTool = "eraser");
+    document.getElementById("clear")?.addEventListener("click", () =>
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+    );
+  
+    /* ================= CAPTION SPACING FIX ================= */
+    const hashtags = document.getElementById("hashtags");
+    if (hashtags) {
+      hashtags.style.display = "flex";
+      hashtags.style.flexWrap = "wrap";
+      hashtags.style.gap = "12px";
+      hashtags.style.marginTop = "16px";
+    }
+  
+  });
+
