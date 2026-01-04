@@ -25,6 +25,28 @@ function getRandomFeedback(count = 4) {
     const shuffled = [...feedbackOptions].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, Math.min(count, shuffled.length));
 }
+const uploadButton = document.getElementById("uploadButton");
+const fileInput = document.getElementById("fileInput");
+const previewContainer = document.getElementById("previewContainer");
+const previewImage = document.getElementById("previewImage");
+const aiSection = document.getElementById("aiSection");
+
+uploadButton.onclick = () => fileInput.click();
+
+fileInput.onchange = () => {
+  const file = fileInput.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    previewImage.src = reader.result;
+    previewContainer.style.display = "block";
+    aiSection.style.display = "block";
+  };
+  reader.readAsDataURL(file);
+
+  fileInput.value = ""; // 🔥 prevents double upload bug
+};
 
 // Predefined list of creative, social-media-ready captions
 const captionOptions = [
@@ -378,16 +400,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const previewContainer = document.getElementById("previewContainer");
     const previewImage = document.getElementById("previewImage");
   
-    uploadButton?.addEventListener("click", () => fileInput.click());
-  
-    fileInput?.addEventListener("change", () => {
-      const file = fileInput.files[0];
-      if (!file) return;
-  
-      if (!file.type.startsWith("image/")) {
-        alert("Please upload an image file");
-        return;
-      }
+
+    
   
       const reader = new FileReader();
       reader.onload = () => {
@@ -401,24 +415,39 @@ document.addEventListener("DOMContentLoaded", () => {
       reader.readAsDataURL(file);
     });
   
-    /* ================= CANVAS FIX ================= */
+   
     const canvas = document.getElementById("drawCanvas");
-    if (!canvas) return;
-  
-    const ctx = canvas.getContext("2d");
-  
-    function resizeCanvas() {
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width;
-      canvas.height = rect.height;
-    }
-  
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-  
-    let drawing = false;
-    let currentTool = "pen";
-  
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas() {
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width;
+  canvas.height = rect.height;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+let drawing = false;
+
+canvas.addEventListener("mousedown", () => drawing = true);
+canvas.addEventListener("mouseup", () => {
+  drawing = false;
+  ctx.beginPath();
+});
+canvas.addEventListener("mouseleave", () => drawing = false);
+
+canvas.addEventListener("mousemove", (e) => {
+  if (!drawing) return;
+  const rect = canvas.getBoundingClientRect();
+  ctx.lineWidth = 3;
+  ctx.lineCap = "round";
+  ctx.strokeStyle = "#000";
+  ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+});
+   
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.strokeStyle = "#111";
@@ -489,5 +518,4 @@ document.addEventListener("DOMContentLoaded", () => {
       hashtags.style.marginTop = "16px";
     }
   
-  });
 
