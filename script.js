@@ -415,19 +415,8 @@ document.getElementById("eraserBtn").onclick = () => currentTool = "eraser";
 document.getElementById("clear").onclick = () =>
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-/* ================= UPLOAD & AI ================= */
-const uploadInput = document.getElementById("uploadArtwork");
-const preview = document.getElementById("artPreview");
 
-uploadInput?.addEventListener("change", () => {
-  const file = uploadInput.files[0];
-  if (!file) return;
 
-  preview.src = URL.createObjectURL(file);
-  preview.style.display = "block";
-
-  showAIFeedback();
-});
 
 function showAIFeedback() {
     document.getElementById("aiSection").style.display = "block";
@@ -464,17 +453,8 @@ function showAIFeedback() {
       ideasList.appendChild(li);
     });
   }
-document.addEventListener("DOMContentLoaded", () => {
-    const uploadButton = document.getElementById("uploadButton");
-    const fileInput = document.getElementById("fileInput");
-    const previewContainer = document.getElementById("previewContainer");
-    const previewImage = document.getElementById("previewImage");
+
   
-    if (!uploadButton || !fileInput) return;
-  
-    uploadButton.addEventListener("click", () => {
-      fileInput.click();
-    });
   
     fileInput.addEventListener("change", () => {
       const file = fileInput.files[0];
@@ -487,7 +467,6 @@ document.addEventListener("DOMContentLoaded", () => {
       };
       reader.readAsDataURL(file);
     });
-  });
 const offlineStatus = document.getElementById("offlineStatus");
 
 function updateOnlineStatus() {

@@ -57,37 +57,52 @@
   <section class="draw">
     <h2>Draw or Upload Your Artwork</h2>
     <canvas id="drawCanvas"></canvas>
-
+  
     <div class="tools">
       <button id="penBtn">✏️ Pen</button>
       <button id="eraserBtn">🧽 Eraser</button>
       <button id="clear">🗑️ Clear</button>
     </div>
+  
     <button id="uploadButton" class="upload-button">Upload Artwork</button>
-
-<input type="file" id="fileInput" accept="image/*" hidden>
-
-<div id="previewContainer" style="display:none;">
-  <img id="previewImage" />
-</div>
-<img id="artPreview" style="display:none;" />
-
-<section id="aiSection" style="display:none;">
-  <h2>AI Feedback</h2>
-  <p id="aiFeedback"></p>
-
-  <h3>Art Trends</h3>
-  <p id="artTrends"></p>
-
-  <h3>Captions</h3>
-  <p id="captions"></p>
-
-  <h3>Hashtags</h3>
-  <p id="hashtags"></p>
-  <h3>Art Ideas Generator</h3>
-<ul id="artIdeas"></ul>
-</section>
+    <input type="file" id="fileInput" accept="image/*" hidden>
+  
+    <div id="previewContainer" style="display:none;">
+      <img id="previewImage" />
+    </div>
   </section>
+  
+
+  <section id="aiSection" style="display:none;">
+
+    <div id="feedbackPanel" class="feedback-panel">
+      <h2 class="feedback-title">AI Feedback</h2>
+      <ul id="feedbackList" class="feedback-list"></ul>
+    </div>
+  
+    <div id="captionPanel" class="caption-panel">
+      <h2 class="caption-title">Captions & Hashtags</h2>
+      <p id="mainCaption" class="main-caption"></p>
+      <div id="hashtags" class="hashtags"></div>
+    </div>
+  
+    <div id="ideaPanel" class="idea-panel">
+      <h2 class="idea-title">Art Ideas Generator</h2>
+      <ul id="ideaList" class="idea-list"></ul>
+    </div>
+  
+    <div id="trendPanel" class="trend-panel">
+      <h2 class="trend-title">Art Trends</h2>
+      <div id="trendList" class="trend-list"></div>
+    </div>
+  
+    <div id="incomePanel" class="income-panel">
+      <h2 class="income-title">How You Can Earn</h2>
+      <p class="income-subtitle">Turn creativity into income</p>
+    </div>
+  
+  </section>
+  
   <section class="cta">
     <h2>Grow From Student to Professional</h2>
     <p>Follow a clear roadmap from learning to real creative income.</p>
