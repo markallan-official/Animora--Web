@@ -1,1214 +1,148 @@
-html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-  
-  body {
-    margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #0f0f1a;
-    color: #ffffff;
-    line-height: 1.7;
-  }
-
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 40px 20px;
-  }
-  
-  section {
-    margin: 80px auto;
-    width: 100%;
-    max-width: 1100px;
-    padding: 0 20px;
-  }
-
-  
-
-/* Fade-in animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 32px 20px;
-  }
-
-  .site-header {
-    text-align: center;
-    padding: 40px 20px 20px;
-  }
-  
-  .logo-image {
-    max-width: 220px;
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
-  }
-  
-  .tagline {
-    font-size: 1.1rem;
-    opacity: 0.85;
-  }
-  
-
-.hero-section {
-    max-width: 700px;
-    margin: 0 auto 50px;
-    text-align: center;
-    padding: 0 20px;
-}
-
-main,
-section {
-  width: 100%;
-  max-width: 100%;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
- 
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px;
-    width: 100%;
-}
-
-.h1 {
-    font-size: 3rem;
-  }
-  
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 16px;
-  }
-  
-  p, li {
-    font-size: 1.05rem;
-    line-height: 1.6;
-  }
-
-.upload-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-}
-
-.upload-button:hover::before {
-    left: 100%;
-}
-
-.upload-button:hover {
-    transform: scale(1.03);
-    opacity: 0.95;
-  }
-
-.upload-button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
-}
-
-.button-text {
-    position: relative;
-    z-index: 1;
-}
-
-.preview-container {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 0.5s ease-in;
-}
-
-.preview-image {
-    max-width: 100%;
-    max-height: 500px;
-    width: auto;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    object-fit: contain;
-}
-
-.feedback-panel {
-    margin-top: 50px;
-    background: #f8f9fa;
-    border-radius: 16px;
-    padding: 32px;
-    text-align: left;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    animation: fadeIn 0.6s ease-in;
-    max-width: 100%;
-}
-
-.feedback-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.feedback-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.feedback-list li {
-    padding: 12px 0;
-    padding-left: 28px;
-    position: relative;
-    color: #333333;
-    line-height: 1.6;
-    font-size: 1rem;
-}
-
-.feedback-list li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: #667eea;
-    font-size: 1.5rem;
-    font-weight: bold;
-    line-height: 1.2;
-}
-
-.feedback-list li:not(:last-child) {
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.caption-panel {
-    margin-top: 30px;
-    background: #f8f9fa;
-    border-radius: 16px;
-    padding: 32px;
-    text-align: left;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    animation: fadeIn 0.6s ease-in;
-    max-width: 100%;
-}
-
-.caption-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 24px;
-    text-align: center;
-}
-
-.caption-content {
-    text-align: center;
-}
-
-.main-caption {
-    font-size: 1.125rem;
-    color: #333333;
-    line-height: 1.7;
-    margin-bottom: 24px;
-    font-style: italic;
-    padding: 0 10px;
-}
-
-.hashtags-container {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #e0e0e0;
-}
-
-.hashtags {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-}
-
-.hashtag {
-    display: inline-block;
-    background: #ffffff;
-    color: #667eea;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border: 1px solid #e0e0e0;
-    transition: all 0.2s ease;
-}
-
-.hashtag:hover {
-    background: #667eea;
-    color: #ffffff;
-    border-color: #667eea;
-    transform: translateY(-1px);
-}
-
-.idea-panel {
-    margin-top: 30px;
-    background: #f8f9fa;
-    border-radius: 16px;
-    padding: 32px;
-    text-align: left;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    animation: fadeIn 0.6s ease-in;
-    max-width: 100%;
-}
-
-.idea-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.idea-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.idea-list li {
-    padding: 14px 0;
-    padding-left: 32px;
-    position: relative;
-    color: #333333;
-    line-height: 1.7;
-    font-size: 1rem;
-}
-
-.idea-list li::before {
-    content: '💡';
-    position: absolute;
-    left: 0;
-    font-size: 1.2rem;
-    line-height: 1.5;
-}
-
-.idea-list li:not(:last-child) {
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.trend-panel {
-    margin-top: 30px;
-    background: #f8f9fa;
-    border-radius: 16px;
-    padding: 32px;
-    text-align: left;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    animation: fadeIn 0.6s ease-in;
-    max-width: 100%;
-}
-
-.trend-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 24px;
-    text-align: center;
-}
-
-.trend-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.trend-item {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
-    border: 1px solid #e0e0e0;
-    transition: all 0.3s ease;
-}
-
-.trend-item:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-    border-color: #667eea;
-}
-
-.trend-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 12px;
-    gap: 12px;
-}
-
-.trend-item-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin: 0;
-    flex: 1;
-}
-
-.trend-platform {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-}
-
-.trend-platform.tiktok {
-    background: #000000;
-    color: #ffffff;
-}
-
-.trend-platform.instagram {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-    color: #ffffff;
-}
-
-.trend-platform.youtube {
-    background: #ff0000;
-    color: #ffffff;
-}
-
-.trend-platform.offline {
-    background: #667eea;
-    color: #ffffff;
-}
-
-.trend-description {
-    font-size: 0.95rem;
-    color: #666666;
-    line-height: 1.6;
-    margin: 0;
-}
-
-.income-panel {
-    margin-top: 30px;
-    background: #f8f9fa;
-    border-radius: 16px;
-    padding: 32px;
-    text-align: left;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    animation: fadeIn 0.6s ease-in;
-    max-width: 100%;
-}
-
-.income-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 8px;
-    text-align: center;
-}
-
-.income-subtitle {
-    font-size: 1rem;
-    color: #666666;
-    text-align: center;
-    margin-bottom: 32px;
-    font-style: italic;
-}
-
-.income-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-
-.income-card {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 24px;
-    border: 1px solid #e0e0e0;
-    transition: all 0.3s ease;
-}
-
-.income-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-    border-color: #667eea;
-}
-
-.income-card-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 20px;
-    text-align: center;
-    padding-bottom: 12px;
-    border-bottom: 2px solid #667eea;
-}
-
-.income-section {
-    margin-bottom: 24px;
-}
-
-.income-section:last-child {
-    margin-bottom: 0;
-}
-
-.income-section-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #333333;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.income-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.income-list li {
-    padding: 8px 0;
-    padding-left: 24px;
-    position: relative;
-    color: #555555;
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-
-.income-list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: #667eea;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .logo-image {
-        max-width: 250px;
-    }
-    
-    .tagline {
-        font-size: 1.1rem;
-        padding: 0 20px;
-    }
-    
-    .upload-button {
-        padding: 16px 40px;
-        font-size: 1rem;
-    }
-    
-    header {
-        margin-bottom: 40px;
-    }
-    
-    .hero-section {
-        margin-bottom: 40px;
-    }
-    
-    .hero-headline {
-        font-size: 1.6rem;
-    }
-    
-    .hero-description {
-        font-size: 1rem;
-    }
-    
-    .hero-feature {
-        font-size: 0.95rem;
-        padding: 14px 18px;
-    }
-    
-    .preview-image {
-        max-height: 400px;
-    }
-    
-    .feedback-panel {
-        margin-top: 40px;
-        padding: 24px;
-    }
-    
-    .feedback-title {
-        font-size: 1.3rem;
-    }
-    
-    .caption-panel {
-        margin-top: 30px;
-        padding: 24px;
-    }
-    
-    .caption-title {
-        font-size: 1.3rem;
-    }
-    
-    .main-caption {
-        font-size: 1.05rem;
-    }
-    
-    .idea-panel {
-        margin-top: 30px;
-        padding: 24px;
-    }
-    
-    .idea-title {
-        font-size: 1.3rem;
-    }
-    
-    .trend-panel {
-        margin-top: 30px;
-        padding: 24px;
-    }
-    
-    .trend-title {
-        font-size: 1.3rem;
-    }
-    
-    .trend-item {
-        padding: 16px;
-    }
-    
-    .trend-item-title {
-        font-size: 1rem;
-    }
-    
-    .income-panel {
-        margin-top: 30px;
-        padding: 24px;
-    }
-    
-    .income-title {
-        font-size: 1.3rem;
-    }
-    
-    .income-columns {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .income-card {
-        padding: 20px;
-    }
-}
-@media (max-width: 600px) {
-    body {
-      font-size: 16px;
-    }
-  
-    h1 {
-      font-size: 1.6rem;
-    }
-  
-    h2 {
-      font-size: 1.3rem;
-    }
-  
-    p, li {
-      font-size: 1rem;
-    }
-  }
-
-@media (max-width: 480px) {
-    .logo-image {
-        max-width: 200px;
-    }
-    
-    .tagline {
-        font-size: 1rem;
-    }
-    
-    .hero-section {
-        margin-bottom: 30px;
-        padding: 0 15px;
-    }
-    
-    .hero-headline {
-        font-size: 1.4rem;
-        margin-bottom: 16px;
-    }
-    
-    .hero-description {
-        font-size: 0.95rem;
-        margin-bottom: 24px;
-    }
-    
-    .hero-features {
-        gap: 12px;
-    }
-    
-    .hero-feature {
-        font-size: 0.9rem;
-        padding: 12px 16px;
-        flex-direction: row;
-        text-align: left;
-    }
-    
-    .hero-icon {
-        font-size: 1.3rem;
-    }
-    
-    .upload-button {
-        padding: 14px 32px;
-        font-size: 0.95rem;
-        width: 90%;
-        max-width: 300px;
-    }
-    
-    .preview-image {
-        max-height: 300px;
-    }
-    
-    .feedback-panel {
-        margin-top: 30px;
-        padding: 20px;
-    }
-    
-    .feedback-title {
-        font-size: 1.2rem;
-    }
-    
-    .feedback-list li {
-        font-size: 0.95rem;
-        padding: 10px 0;
-        padding-left: 24px;
-    }
-    
-    .caption-panel {
-        margin-top: 25px;
-        padding: 20px;
-    }
-    
-    .caption-title {
-        font-size: 1.2rem;
-    }
-    
-    .main-caption {
-        font-size: 1rem;
-    }
-    
-    .hashtag {
-        font-size: 0.85rem;
-        padding: 5px 10px;
-    }
-    
-    .idea-panel {
-        margin-top: 25px;
-        padding: 20px;
-    }
-    
-    .idea-title {
-        font-size: 1.2rem;
-    }
-    
-    .idea-list li {
-        font-size: 0.95rem;
-        padding: 12px 0;
-        padding-left: 28px;
-    }
-    
-    .trend-panel {
-        margin-top: 25px;
-        padding: 20px;
-    }
-    
-    .trend-title {
-        font-size: 1.2rem;
-    }
-    
-    .trend-item {
-        padding: 14px;
-    }
-    
-    .trend-item-title {
-        font-size: 0.95rem;
-    }
-    
-    .trend-description {
-        font-size: 0.9rem;
-    }
-    
-    .trend-platform {
-        font-size: 0.7rem;
-        padding: 3px 10px;
-    }
-    
-    .trend-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .income-panel {
-        margin-top: 25px;
-        padding: 20px;
-    }
-    
-    .income-title {
-        font-size: 1.2rem;
-    }
-    
-    .income-subtitle {
-        font-size: 0.9rem;
-    }
-    
-    .income-card-title {
-        font-size: 1.1rem;
-    }
-    
-    .income-section-title {
-        font-size: 0.95rem;
-    }
-    
-    .income-list li {
-        font-size: 0.9rem;
-        padding: 6px 0;
-        padding-left: 22px;
-    }
-}
-
-
-  
-  #hero {
-    margin-bottom: 80px;
-  }
-  
-  h2 {
-    margin-top: 40px;
-  }
-  /* Improve list alignment for income & how-it-works sections */
-  #income ul,
-  #how-it-works ol {
-    list-style-position: inside;
-    padding-left: 0;
-    margin-left: 0;
-    margin-top: 8px;
-  }
-  #income,
-#how-it-works {
-  margin-bottom: 40px;
-}
-
-
-  
-  .tools {
-    margin-top: 10px;
-  }
-  
-  .tools button {
-    padding: 8px 16px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  #onboarding {
-    background: #f7f7fb;
-    padding: 30px;
-    border-radius: 8px;
-    margin: 40px auto;
-    max-width: 900px;
-  }
-  
-  #onboarding h2 {
-    margin-bottom: 10px;
-  }
-  
-  #onboarding ol {
-    margin-top: 15px;
-  }
-  #offlineStatus {
-    display: none;
-    background: #ffefc5;
-    color: #333;
-    padding: 10px;
-    text-align: center;
-    font-size: 14px;
-  }
-  .trust-section {
-    background: #f9f9ff;
-    padding: 40px;
-    margin-top: 60px;
-    border-radius: 12px;
-  }
-  
-  .trust-section h2 {
-    margin-bottom: 15px;
-  }
-  
-  .trust-section ul {
-    margin-left: 20px;
-  }
-  
-  .trust-section a {
-    display: inline-block;
-    margin-top: 15px;
-    color: #5a4bff;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  .demo, .revenue, .earn {
-    margin-top: 40px;
-    padding: 20px;
-    background: #f7f7ff;
-    border-radius: 12px;
-  }
-  
-  .demo h2, .revenue h2, .earn h2 {
-    margin-bottom: 10px;
-  }
-  
-  .demo ul, .revenue ul, .earn ul {
-    padding-left: 20px;
-  }
-  .onboarding {
-    margin-top: 50px;
-    padding: 30px;
-    background: #ffffff;
-    border-radius: 14px;
-  }
-  
-  .paths {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-  }
-  
-  .path {
-    padding: 15px;
-    background: #f2f3ff;
-    border-radius: 10px;
-  }
-  .draw {
-    margin-top: 40px;
-  }
-  
-  
-  
-  
-  .draw {
-    margin: 60px 0;
-  }
-  
-  
-  
-  .tools {
-    margin-top: 10px;
-  }
-  
-  .tools button {
-    margin-right: 8px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-  }
-  section {
-    margin-top: 30px;
-  }
-  
-  section h2 {
-    color: #4b4cff;
-  }
-
-  
-  .feedback-section {
-    margin: 80px auto;
-    padding: 40px;
-    max-width: 900px;
-    background: #f9f9ff;
-    border-radius: 12px;
-    text-align: center;
-  }
-  
-  .feedback-section h2 {
-    margin-bottom: 10px;
-    font-size: 28px;
-  }
-  
-  .feedback-section p {
-    margin-bottom: 25px;
-    color: #555;
-  }
-  /* ===== GLOBAL SECTIONS ===== */
-section {
-    margin: 80px auto;
-    max-width: 1100px;
-    padding: 0 20px;
-  }
-  
-  h2 {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    color: #6c63ff;
-  }
-  /* === CANVAS VISUAL BOUNDARY === */
-.draw {
-    margin: 80px auto;
-    padding: 40px;
-    max-width: 1000px;
-    background: linear-gradient(145deg, #1a1a2e, #0f0f1a);
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-  }
-  
-  .draw h2 {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    color: #ffffff;
-  }
-  
-  #drawCanvas {
-    width: 100%;
-    height: 450px;
-    background: #ffffff;
-    border: 4px dashed #7c3aed;
-    border-radius: 16px;
-    cursor: crosshair;
-  }
-  .draw {
-    width: 100%;
-    max-width: 100%;
-    padding: 20px;
-    margin: 40px auto;
-  }
-  
-  #drawCanvas {
-    display: block;
-    width: 100%;
-    height: 300px;
-    background: #fff;
-    border: 2px dashed #6c63ff;
-  }
-  
-  /* ===== DRAW SECTION ===== */
-  .draw {
-    background: #f7f7ff;
-    padding: 40px;
-    border-radius: 16px;
-  }
-  
-  .draw {
-    width: 100%;
-    max-width: 100%;
-    padding: 20px;
-    margin: 40px auto;
-  }
-  
-  #drawCanvas {
-    display: block;
-    width: 100%;
-    height: 300px;
-    background: #fff;
-    border: 2px dashed #6c63ff;
-  }
-  
-  
-  /* ===== DRAW TOOLS ===== */
-  .tools {
-    margin-top: 15px;
-    display: flex;
-    gap: 10px;
-  }
-  
-  .tools button {
-    padding: 10px 16px;
-    font-size: 14px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    background: #6c63ff;
-    color: white;
-  }
-  
-  /* ===== FEEDBACK ===== */
-  .feedback-section {
-    background: #111;
-    color: white;
-    padding: 40px;
-    border-radius: 16px;
-    max-width: 800px;
-    margin: 100px auto;
-  }
-  
-
-  
-  #artPreview {
-    max-width: 100%;
-    max-height: 350px;
-    margin: 20px auto;
-    display: block;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
-  }
-  #artIdeas {
-    margin-top: 15px;
-    padding-left: 20px;
-  }
-  
-  #artIdeas li {
-    margin-bottom: 10px;
-    font-size: 1.05rem;
-    color: #d6faff;
-  }
-
-  body {
-    font-size: 18px;
-    line-height: 1.7;
-  }
-  
-  h1 { font-size: 2.6rem; }
-  h2 { font-size: 2rem; }
-  h3 { font-size: 1.4rem; }
-  
-  section {
-    margin: 60px 0;
-  }
-  /* ===== FORCE CANVAS VISIBILITY ===== */
-.draw {
-    width: 100%;
-    padding: 40px 0;
-  }
-  
-  
-  
-  /* === TYPOGRAPHY BOOST === */
-h1 {
-    font-size: 3.4rem;
-    letter-spacing: -0.02em;
-  }
-  
-  h2 {
-    font-size: 2.4rem;
-  }
-  
-  p, li {
-    font-size: 1.15rem;
-  }
-  
-  /* === SECTION SPACING === */
-  section {
-    margin-bottom: 100px;
-  }
-  
-  /* === CTA / FEATURE SECTIONS === */
-  .cta {
-    text-align: center;
-    padding: 80px 40px;
-    background: linear-gradient(135deg, #7c3aed, #4f46e5);
-    border-radius: 24px;
-    color: #ffffff;
-  }
-  
-  .cta h2 {
-    font-size: 2.6rem;
-  }
-  
-  .cta p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-  }
-  /* ===== GLOBAL RESET ===== */
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
   }
   
   body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #0b0f1a;
-    color: #ffffff;
-    line-height: 1.6;
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: #0f0f1a;
+    color: white;
     overflow-x: hidden;
   }
   
-  /* ===== CONTAINER ===== */
   .container {
     max-width: 1100px;
     margin: auto;
-    padding: 1.2rem;
+    padding: 16px;
   }
   
-  /* ===== HEADER ===== */
   .site-header {
     text-align: center;
-    padding: 1.5rem 1rem;
+    padding: 20px;
   }
   
   .logo-image {
-    max-width: 180px;
+    max-width: 160px;
     width: 100%;
-    height: auto;
   }
   
-  /* ===== TEXT SCALE ===== */
+  .hero {
+    text-align: center;
+    margin: 40px 0;
+  }
+  
   h1 { font-size: 2rem; }
   h2 { font-size: 1.4rem; }
-  p, li { font-size: 1rem; }
   
-  /* ===== CANVAS ===== */
+  .draw {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 16px;
+  }
+  
   #drawCanvas {
     width: 100%;
     height: 300px;
-    background: #ffffff;
-    border: 2px dashed #6cf;
-    border-radius: 12px;
+    border: 2px dashed #6c63ff;
+    background: white;
     display: block;
-    margin: 1rem 0;
   }
   
-  /* ===== IMAGE PREVIEW ===== */
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  
+  button, input[type="color"] {
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .upload-button {
+    margin-top: 10px;
+  }
+  
   #previewImage {
     max-width: 100%;
     max-height: 300px;
     display: block;
-    margin: 1rem auto;
-    border-radius: 10px;
+    margin: 16px auto;
   }
   
-  /* ===== BUTTONS ===== */
-  button,
-  .upload-button {
-    background: linear-gradient(135deg, #6cf, #8a7cff);
-    color: #000;
-    border: none;
-    padding: 0.7rem 1.2rem;
-    margin: 0.3rem;
-    border-radius: 999px;
-    font-size: 1rem;
-    cursor: pointer;
+  #aiSection {
+    margin-top: 40px;
   }
   
-  /* ===== MOBILE FIX ===== */
   @media (max-width: 600px) {
     h1 { font-size: 1.6rem; }
     h2 { font-size: 1.2rem; }
-    p, li { font-size: 0.95rem; }
+    .logo-image { max-width: 120px; }
+  }
+/* ===== COMMUNITY FEEDBACK ===== */
+#communityFeedback {
+    margin-top: 40px;
+    background: #111;
+    padding: 20px;
+    border-radius: 16px;
+  }
   
-    .logo-image {
-      max-width: 140px;
-    }
+  .community-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
   
-    #drawCanvas {
-      height: 260px;
-    }
+  #likeBtn {
+    background: #6c63ff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 999px;
+  }
+  
+  #likeCount {
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+  
+  .comment-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  #commentInput {
+    width: 100%;
+    min-height: 80px;
+    border-radius: 12px;
+    padding: 10px;
+    border: none;
+    resize: vertical;
+  }
+  
+  #commentBtn {
+    align-self: flex-end;
+    background: #4f46e5;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 999px;
+  }
+  
+  #commentList {
+    margin-top: 20px;
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  #commentList li {
+    background: #1c1c2b;
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
   }

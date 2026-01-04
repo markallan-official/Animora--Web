@@ -1,157 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ3KM1G0SG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-SZ3KM1G0SG');
-  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animora — AI for Artists</title>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="Cyxssqimq_9TJ_WVW9PExJtYuiFnem9FLO3eaxdhujQ">
-
-  <title>Animora — AI for Artists to Create, Grow, and Earn</title>
-
-  <link rel="stylesheet" href="style.css?v=3">
-  <script defer src="script.js?v=3"></script>
+  <link rel="stylesheet" href="style.css?v=4">
+  <script defer src="script.js?v=4"></script>
 </head>
 
 <body>
 
 <header class="site-header">
-  <div class="logo">
-    <img src="animora-logo.png" alt="Animora" class="logo-image">
-  </div>
-  <p class="tagline">AI-powered assistant for artists and animators</p>
-  <div id="offlineStatus">You are offline. Drawing still works.</div>
+  <img src="animora-logo.png" alt="Animora" class="logo-image">
+  <p class="tagline">AI-powered assistant for artists</p>
 </header>
 
 <main class="container">
 
-  <!-- HERO -->
-  <section class="hero-section">
-    <h1 class="hero-headline">Transform Your Artwork into Opportunities</h1>
-    <p class="hero-description">
-      Animora is an offline-friendly AI assistant for beginners, students, creators,
-      and professionals to turn art into real opportunities.
-    </p>
-  </section>
+<section class="hero">
+  <h1>Transform Your Art into Opportunity</h1>
+  <p>Create, grow, and earn with AI support.</p>
+</section>
 
-  <!-- DEMO -->
-  <section class="demo">
-    <h2>Animora in 30 Seconds</h2>
-    <ul>
-      <li>🎨 Draw or upload artwork</li>
-      <li>🤖 AI feedback on style & composition</li>
-      <li>🎬 Storyboards & animation drafts</li>
-      <li>📈 Trends & captions</li>
-      <li>💰 Online & offline income paths</li>
-    </ul>
-  </section>
+<section class="draw">
+  <h2>Draw or Upload Artwork</h2>
 
-  <!-- DRAW -->
-  <section class="draw">
-    <h2>Draw or Upload Your Artwork</h2>
-    <canvas id="drawCanvas"></canvas>
-  
-    <div class="tools">
-      <button id="penBtn">✏️ Pen</button>
-      <button id="eraserBtn">🧽 Eraser</button>
-      <button id="clear">🗑️ Clear</button>
-    </div>
-  
-    <button id="uploadButton" class="upload-button">Upload Artwork</button>
-    <input type="file" id="fileInput" accept="image/*" hidden>
-  
-    <div id="previewContainer" style="display:none;">
-      <img id="previewImage" />
-    </div>
-  </section>
-  
+  <canvas id="drawCanvas"></canvas>
 
-  <section id="aiSection" style="display:none;">
+  <div class="tools">
+    <button id="penBtn">Pen</button>
+    <button id="eraserBtn">Eraser</button>
+    <input type="color" id="colorPicker">
+    <button id="undoBtn">Undo</button>
+    <button id="redoBtn">Redo</button>
+    <button id="clear">Clear</button>
+  </div>
 
-    <div id="feedbackPanel" class="feedback-panel">
-      <h2 class="feedback-title">AI Feedback</h2>
-      <ul id="feedbackList" class="feedback-list"></ul>
-    </div>
-  
-    <div id="captionPanel" class="caption-panel">
-      <h2 class="caption-title">Captions & Hashtags</h2>
-      <p id="mainCaption" class="main-caption"></p>
-      <div id="hashtags" class="hashtags"></div>
-    </div>
-  
-    <div id="ideaPanel" class="idea-panel">
-      <h2 class="idea-title">Art Ideas Generator</h2>
-      <ul id="ideaList" class="idea-list"></ul>
-    </div>
-  
-    <div id="trendPanel" class="trend-panel">
-      <h2 class="trend-title">Art Trends</h2>
-      <div id="trendList" class="trend-list"></div>
-    </div>
-  
-    <div id="incomePanel" class="income-panel">
-      <h2 class="income-title">How You Can Earn</h2>
-      <p class="income-subtitle">Turn creativity into income</p>
-    </div>
-  
-  </section>
-  
-  <section class="cta">
-    <h2>Grow From Student to Professional</h2>
-    <p>Follow a clear roadmap from learning to real creative income.</p>
-    <a href="roadmap.html" class="upload-button">🎓 View Career Roadmap</a>
-  </section>
+  <button id="uploadButton" class="upload-button">Upload Artwork</button>
+  <input type="file" id="fileInput" accept="image/*" hidden>
 
-  <!-- FEEDBACK -->
-  <section id="feedback" class="feedback-section">
-    <h2>Community Feedback</h2>
-    <p>Help shape Animora’s future.</p>
+  <div id="previewContainer">
+    <img id="previewImage">
+  </div>
+</section>
 
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSdOZ02yQGyi86eDUU198XOiuRquOt-T5uSn7RRsboCCJ5kidw/viewform?embedded=true"
-      width="100%" height="700" frameborder="0">
-    </iframe>
-  </section>
+<section id="aiSection">
+  <h2>AI Feedback</h2>
+  <ul id="feedbackList"></ul>
 
-  <!-- HOW IT WORKS -->
-  <section id="how-it-works">
-    <h2>How Animora Works</h2>
-    <ol>
-      <li>Create or upload artwork</li>
-      <li>Receive AI feedback</li>
-      <li>Generate ideas & captions</li>
-      <li>Draft animations</li>
-      <li>Export or work offline</li>
-    </ol>
-  </section>
+  <h2>Caption</h2>
+  <p id="mainCaption"></p>
+  <div id="hashtags"></div>
 
-  <!-- EARN -->
-  <section id="income">
-    <h2>How You Earn with Animora</h2>
-    <ul>
-      <li>Client commissions</li>
-      <li>Social media growth</li>
-      <li>Digital product sales</li>
-      <li>Portfolio building</li>
-      <li>Offline creative work</li>
-    </ul>
-  </section>
+  <h2>Art Ideas</h2>
+  <ul id="ideaList"></ul>
 
-  <section class="trust">
-    <p>
-      Your artwork is yours. Privacy-first. Offline-friendly.
-      <a href="privacy.html">Read our Privacy Policy</a>
-    </p>
-  </section>
+  <h2>Trends</h2>
+  <div id="trendList"></div>
+  <hr style="margin:40px 0;">
+
+<section id="communityFeedback">
+  <h2>Community Feedback</h2>
+
+  <div class="community-actions">
+    <button id="likeBtn">👍 Like</button>
+    <span id="likeCount">0 likes</span>
+  </div>
+
+  <div class="comment-box">
+    <textarea id="commentInput" placeholder="Leave a comment..."></textarea>
+    <button id="commentBtn">Post Comment</button>
+  </div>
+
+  <ul id="commentList"></ul>
+</section>
+
 </main>
-
 </body>
 </html>
-
