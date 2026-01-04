@@ -263,6 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
             reader.onload = function(event) {
                 previewImage.src = event.target.result;
                 previewContainer.style.display = 'flex';
+                document.getElementById("aiSection").style.display = "block";
                 
                 // Generate and display AI feedback
                 const selectedFeedback = getRandomFeedback(4);
@@ -369,138 +370,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-/* ================= CANVAS ================= */
-const canvas = document.getElementById("drawCanvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = canvas.offsetWidth;
-canvas.height = canvas.offsetHeight;
-
-let drawing = false;
-let currentTool = "pen";
-
-ctx.lineCap = "round";
-ctx.strokeStyle = "#00f6ff";
-
-canvas.addEventListener("mousedown", e => {
-  drawing = true;
-  ctx.beginPath();
-  ctx.moveTo(e.offsetX, e.offsetY);
-});
-
-canvas.addEventListener("mousemove", e => {
-  if (!drawing) return;
-
-  if (currentTool === "eraser") {
-    ctx.globalCompositeOperation = "destination-out";
-    ctx.lineWidth = 20;
-  } else {
-    ctx.globalCompositeOperation = "source-over";
-    ctx.lineWidth = 3;
+function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
   }
-
-  ctx.lineTo(e.offsetX, e.offsetY);
-  ctx.stroke();
-});
-
-canvas.addEventListener("mouseup", () => {
-  drawing = false;
-  ctx.beginPath();
-});
-
-canvas.addEventListener("mouseleave", () => drawing = false);
-
-document.getElementById("penBtn").onclick = () => currentTool = "pen";
-document.getElementById("eraserBtn").onclick = () => currentTool = "eraser";
-document.getElementById("clear").onclick = () =>
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-
-
-
-function showAIFeedback() {
-    document.getElementById("aiSection").style.display = "block";
   
-    document.getElementById("aiFeedback").innerText =
-      "This artwork shows strong creativity and visual identity. With refinement and consistency, it can perform well commercially.";
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
   
-    document.getElementById("artTrends").innerText =
-      "🔥 Trending styles: Neon cyberpunk, futuristic minimalism, AI-inspired abstract forms.";
-  
-    document.getElementById("captions").innerText =
-      "Caption ideas:\n• \"Art designed beyond tomorrow\"\n• \"Where imagination meets technology\"\n• \"Created with vision, powered by AI\"";
-  
-    document.getElementById("hashtags").innerText =
-      "#Animora #DigitalArt #AIArt #FutureDesign #CreativeTech";
-  
-    // ART IDEAS GENERATOR
-    const ideas = [
-      "A futuristic city powered by glowing energy lines",
-      "A human-robot hybrid discovering creativity",
-      "An African-inspired cyberpunk character",
-      "Nature reclaiming abandoned technology",
-      "A floating digital library of human imagination",
-      "A student artist transforming into a professional creator",
-      "An AI assistant guiding an artist in a neon studio"
-    ];
-  
-    const ideasList = document.getElementById("artIdeas");
-    ideasList.innerHTML = "";
-  
-    ideas.sort(() => 0.5 - Math.random()).slice(0, 4).forEach(idea => {
-      const li = document.createElement("li");
-      li.textContent = idea;
-      ideasList.appendChild(li);
-    });
-  }
-
-  
-  
-    fileInput.addEventListener("change", () => {
-      const file = fileInput.files[0];
-      if (!file) return;
-  
-      const reader = new FileReader();
-      reader.onload = () => {
-        previewImage.src = reader.result;
-        previewContainer.style.display = "flex";
-      };
-      reader.readAsDataURL(file);
-    });
-const offlineStatus = document.getElementById("offlineStatus");
-
-function updateOnlineStatus() {
-  if (!navigator.onLine) {
-    offlineStatus.style.display = "block";
-  } else {
-    offlineStatus.style.display = "none";
-  }
-}
-
-window.addEventListener("online", updateOnlineStatus);
-window.addEventListener("offline", updateOnlineStatus);
-
-updateOnlineStatus();
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/sw.js")
-      .then(() => console.log("Service Worker registered"))
-      .catch(err => console.error("Service Worker error:", err));
-  } 
-  document.getElementById("feedbackForm")?.addEventListener("submit", function (e) {
-    e.preventDefault();
-  
-    const name = document.getElementById("userName").value || "Anonymous";
-    const feedback = document.getElementById("userFeedback").value;
-  
-    if (typeof gtag === "function") {
-      gtag("event", "user_feedback", {
-        user_name: name,
-        feedback_text: feedback
-      });
-    }
-  
-    document.getElementById("feedbackStatus").innerText =
-      "Thank you! Your feedback has been sent.";
-  
-    this.reset();
-  });
+  ctx.lineCap = "round";
+  ctx.strokeStyle = "#00f6ff"; // futuristic cyan
