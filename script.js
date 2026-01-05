@@ -14,6 +14,7 @@ saveHistory();
 
 let drawing = false;
 let currentTool = "pen";
+let currentColor = "#000000";
 let history = [];
 let redoStack = [];
 
@@ -37,7 +38,7 @@ function draw(e) {
     ctx.lineWidth = 20;
   } else {
     ctx.globalCompositeOperation = "source-over";
-    ctx.strokeStyle = document.getElementById("colorPicker").value;
+    ctx.strokeStyle = currentColor;
     ctx.lineWidth = 3;
   }
 
@@ -57,6 +58,27 @@ canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", draw);
 canvas.addEventListener("mouseup", stopDraw);
 canvas.addEventListener("mouseleave", stopDraw);
+canvas.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  const touch = e.touches[0];
+  const rect = canvas.getBoundingClientRect();
+  startDraw({
+    offsetX: touch.clientX - rect.left,
+    offsetY: touch.clientY - rect.top
+  });
+});
+
+canvas.addEventListener("touchmove", (e) => {
+  e.preventDefault();
+  const touch = e.touches[0];
+  const rect = canvas.getBoundingClientRect();
+  draw({
+    offsetX: touch.clientX - rect.left,
+    offsetY: touch.clientY - rect.top
+  });
+});
+
+canvas.addEventListener("touchend", stopDraw);
 
 // ===============================
 // HISTORY (UNDO / REDO)
@@ -100,6 +122,13 @@ document.getElementById("clear").onclick = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   saveHistory();
 };
+document.getElementById("undoBtn").onclick = undo;
+document.getElementById("redoBtn").onclick = redo;
+const colorPicker = document.getElementById("colorPicker");
+
+colorPicker.addEventListener("input", (e) => {
+  currentColor = e.target.value;
+});
 
 // ===============================
 // UPLOAD ARTWORK (NO DUPLICATES)
