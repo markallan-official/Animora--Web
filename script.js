@@ -10,6 +10,7 @@ function resizeCanvas() {
 }
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
+saveHistory();
 
 let drawing = false;
 let currentTool = "pen";
@@ -36,7 +37,7 @@ function draw(e) {
     ctx.lineWidth = 20;
   } else {
     ctx.globalCompositeOperation = "source-over";
-    ctx.strokeStyle = "#000000";
+    ctx.strokeStyle = document.getElementById("colorPicker").value;
     ctx.lineWidth = 3;
   }
 
@@ -67,10 +68,12 @@ function saveHistory() {
 }
 
 function undo() {
-  if (history.length === 0) return;
+  if (history.length <= 1) return;
+
   redoStack.push(history.pop());
   restoreCanvas(history[history.length - 1]);
 }
+
 
 function redo() {
   if (redoStack.length === 0) return;
