@@ -4,10 +4,15 @@
 const canvas = document.getElementById("drawCanvas");
 const ctx = canvas.getContext("2d");
 
-function resizeCanvas() {
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
+function setupCanvas() {
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width;
+  canvas.height = 350; // FIXED HEIGHT — NEVER ZERO
 }
+
+setupCanvas();
+window.addEventListener("orientationchange", setupCanvas);
+
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 saveHistory();

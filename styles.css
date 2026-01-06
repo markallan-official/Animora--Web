@@ -117,16 +117,14 @@
   
   .draw canvas {
     width: 100%;
-    max-width: 100%;
-    min-height: 320px;
-    height: auto;
+    height: 350px;
     display: block;
     margin: 1rem auto;
-    border: 2px dashed #374151;
+    border: 2px solid #6366f1; /* TEMP VISUAL BORDER */
     border-radius: 14px;
     background: #020617;
-    touch-action: none;
-  }
+  } 
+  
   
   
   .tools {
