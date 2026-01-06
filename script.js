@@ -1,3 +1,8 @@
+let drawing = false;
+let currentTool = "pen";
+let currentColor = "#000000";
+let history = [];
+let redoStack = [];
 // ===============================
 // CANVAS SETUP
 // ===============================
@@ -12,20 +17,12 @@ function setupCanvas() {
   ctx.fillStyle = "#ffffff";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  saveHistory();
 }
 
 setupCanvas();
+saveHistory();
+
 window.addEventListener("orientationchange", setupCanvas);
-
-
-
-
-let drawing = false;
-let currentTool = "pen";
-let currentColor = "#000000";
-let history = [];
-let redoStack = [];
 
 // ===============================
 // DRAWING LOGIC
