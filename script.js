@@ -7,15 +7,19 @@ const ctx = canvas.getContext("2d");
 function setupCanvas() {
   const rect = canvas.getBoundingClientRect();
   canvas.width = rect.width;
-  canvas.height = 350; // FIXED HEIGHT — NEVER ZERO
+  canvas.height = 350;
+
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  saveHistory();
 }
 
 setupCanvas();
 window.addEventListener("orientationchange", setupCanvas);
 
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
-saveHistory();
+
+
 
 let drawing = false;
 let currentTool = "pen";
@@ -214,3 +218,4 @@ window.addEventListener("online", updateOnlineStatus);
 window.addEventListener("offline", updateOnlineStatus);
 updateOnlineStatus();
 
+setupCanvas();
